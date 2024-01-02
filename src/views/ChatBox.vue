@@ -12,12 +12,12 @@
 
         <!-- Search -->
         <footer
-            class="max-w-4xl mx-auto sticky bottom-0 z-10 p-3 sm:py-6 bg-gradient-to-t dark:from-slate-800 from-white to-transparent">
+            class="max-w-4xl mx-auto sticky bottom-0 z-10 p-3 sm:py-6 bg-gradient-to-t from-white dark:from-slate-800 to-transparent">
             <!-- Input -->
             <div class="relative">
                 <textarea
                     class="p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Ask me anything..." v-model="prompt" @keydown.enter.native="send"></textarea>
+                    placeholder="Ask me anything..." v-model="prompt" @keydown.enter.native.prevent="send"></textarea>
 
                 <!-- Toolbar -->
                 <div class="absolute bottom-px inset-x-px p-2 rounded-b-md bg-gray-100 dark:bg-slate-800">
@@ -46,7 +46,7 @@
                             <button type="button"
                                 class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                 @click="send">
-                                <SendDiagonal class="w-4"></SendDiagonal>
+                                <SendDiagonal class="w-4 inline-block scale-x-[-1]"></SendDiagonal>
                             </button>
                             <!-- End Send Button -->
                         </div>
