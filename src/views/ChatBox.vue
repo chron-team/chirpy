@@ -83,6 +83,10 @@ onMounted(() => {
     openai = new OpenAI({ apiKey: api_key.value, dangerouslyAllowBrowser: true });
 })
 
+const scroll_down = () => {
+    document.documentElement.scrollTop = document.documentElement.scrollHeight + 1000;
+}
+
 async function send() {
     if (!api_key.value) {
         alert("Please enter your OpenAI API key in setting page.")
@@ -95,6 +99,7 @@ async function send() {
 
     messages.value.push({ role: "user", content: prompt.value })
     prompt.value = ""
+    scroll_down()
 
     const completion = await openai.chat.completions.create({
         model: model_type.value,
@@ -105,6 +110,7 @@ async function send() {
 
     for await (const chunk of completion) {
         messages.value[messages.value.length - 1].content += chunk.choices[0].delta.content || ''
+        scroll_down()
     }
 }
 </script>
